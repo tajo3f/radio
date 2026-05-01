@@ -32,11 +32,11 @@
             color: var(--text);
             font-family: 'Outfit', sans-serif;
             overflow-x: hidden;
-            cursor: none; /* Esconde cursor padrão */
+            cursor: none;
         }
 
         /* =========================================
-           FUNDO ANIMADO FLUIDO (CSS AVANÇADO)
+           FUNDO ANIMADO
         ========================================= */
         .animated-bg {
             position: fixed;
@@ -70,7 +70,7 @@
         }
 
         /* =========================================
-           CURSOR PERSONALIZADO
+           CURSOR CUSTOM
         ========================================= */
         .cursor-dot {
             width: 8px; height: 8px;
@@ -95,7 +95,7 @@
         }
 
         /* =========================================
-           GLASSMORPHISM BASE
+           ESTRUTURA
         ========================================= */
         .glass-panel {
             background: var(--glass);
@@ -105,9 +105,6 @@
             border-radius: 24px;
         }
 
-        /* =========================================
-           HEADER & NAVEGAÇÃO
-        ========================================= */
         header {
             position: fixed;
             top: 20px; left: 50%;
@@ -121,152 +118,52 @@
             z-index: 1000;
         }
 
-        .logo {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            cursor: pointer;
-        }
+        .logo { font-family: 'Syncopate', sans-serif; font-size: 24px; font-weight: 700; }
         .logo span { color: var(--primary); text-shadow: var(--neon); }
 
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
+        nav ul { display: flex; list-style: none; gap: 30px; }
         nav a {
             color: var(--text-dim);
             text-decoration: none;
-            font-weight: 600;
-            font-size: 14px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: 0.3s;
-            cursor: none;
+            font-weight: 600; font-size: 14px;
+            letter-spacing: 1px; text-transform: uppercase;
+            transition: 0.3s; cursor: none;
         }
+        nav a:hover, nav a.active { color: var(--text); text-shadow: 0 0 10px #fff; }
 
-        nav a:hover, nav a.active {
-            color: var(--text);
-            text-shadow: 0 0 10px rgba(255,255,255,0.5);
-        }
+        main { padding-top: 130px; padding-bottom: 150px; width: 90%; max-width: 1200px; margin: 0 auto; min-height: 100vh; }
 
-        /* =========================================
-           SISTEMA DE PÁGINAS (SPA)
-        ========================================= */
-        main {
-            padding-top: 130px;
-            padding-bottom: 150px; 
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            min-height: 100vh;
-        }
-
-        .page {
-            display: none;
-            animation: fadeIn 0.5s ease forwards;
-        }
+        .page { display: none; animation: fadeIn 0.5s ease forwards; }
         .page.active { display: block; }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        h2.glitch-title {
-            font-family: 'Syncopate', sans-serif;
-            font-size: 3rem;
-            margin-bottom: 20px;
-            position: relative;
-            text-transform: uppercase;
-        }
+        .glitch-title { font-family: 'Syncopate', sans-serif; font-size: 3rem; margin-bottom: 20px; text-transform: uppercase; }
 
-        /* PÁGINA HOME */
-        .hero { text-align: center; margin-top: 50px; }
-        .hero-subtitle {
-            color: var(--secondary);
-            letter-spacing: 4px;
-            font-weight: 300;
-            margin-bottom: 30px;
-        }
-
-        /* PÁGINA QUEM SOMOS */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-        .about-card { padding: 40px; }
-        .about-card h3 { color: var(--primary); margin-bottom: 15px; font-family: 'Syncopate'; }
-
-        /* PÁGINA NOTÍCIAS */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        .news-card { padding: 25px; transition: 0.3s; }
-        .news-card:hover { transform: translateY(-5px); border-color: var(--primary); }
-        .news-date { color: var(--secondary); font-size: 12px; margin-bottom: 10px; display: block; }
-
-        /* PÁGINA CHAT */
-        .chat-container { display: flex; flex-direction: column; height: 60vh; }
-        .chat-box {
-            flex: 1; overflow-y: auto; padding: 20px;
-            display: flex; flex-direction: column; gap: 15px;
-        }
-        .msg { background: rgba(255,255,255,0.05); padding: 15px; border-radius: 12px; width: fit-content; max-width: 80%; }
-        .msg.system { color: var(--secondary); font-size: 12px; align-self: center; background: none; }
-        .msg.user { background: rgba(123, 46, 255, 0.2); align-self: flex-end; border: 1px solid var(--primary); }
-        .chat-input-area { display: flex; gap: 10px; padding: 20px; border-top: 1px solid var(--border); }
-        .chat-input-area input {
-            flex: 1; background: rgba(0,0,0,0.5); border: 1px solid var(--border);
-            color: #fff; padding: 15px; border-radius: 12px; font-family: 'Outfit';
-            cursor: none;
-        }
-        .btn-send {
-            background: var(--primary); color: #fff; border: none; padding: 0 30px;
-            border-radius: 12px; font-weight: bold; cursor: none; transition: 0.3s;
-        }
-        .btn-send:hover { box-shadow: var(--neon); }
-
-        /* =========================================
-           PLAYER GLOBAL INFERIOR
-        ========================================= */
+        /* PLAYER BAR */
         .player-bar {
-            position: fixed;
-            bottom: 20px; left: 50%;
-            transform: translateX(-50%);
-            width: 90%; max-width: 1200px;
-            height: 90px;
-            display: grid;
-            grid-template-columns: 1fr 2fr 1fr;
-            align-items: center;
-            padding: 0 30px;
-            z-index: 1000;
+            position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 1200px; height: 90px;
+            display: grid; grid-template-columns: 1fr 2fr 1fr; align-items: center;
+            padding: 0 30px; z-index: 1000;
         }
 
         .live-status { display: flex; align-items: center; gap: 10px; }
         .dot { width: 10px; height: 10px; background: #ff003c; border-radius: 50%; animation: blink 1s infinite alternate; }
         @keyframes blink { from {opacity: 1; box-shadow: 0 0 10px #ff003c;} to {opacity: 0.3;} }
-        
-        .track-info h4 { font-family: 'Syncopate'; font-size: 14px; }
-        .track-info p { font-size: 12px; color: var(--text-dim); }
 
-        .controls { display: flex; justify-content: center; align-items: center; gap: 20px; }
+        .controls { display: flex; justify-content: center; align-items: center; }
         .play-btn {
-            width: 50px; height: 50px;
-            background: #fff; color: #000;
-            border: none; border-radius: 50%;
-            font-size: 20px; cursor: none;
-            display: flex; justify-content: center; align-items: center;
+            width: 55px; height: 55px; background: #fff; color: #000; border: none; border-radius: 50%;
+            font-size: 24px; cursor: none; display: flex; justify-content: center; align-items: center;
             transition: 0.3s;
         }
-        .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.4); }
+        .play-btn:hover { transform: scale(1.1); box-shadow: 0 0 25px var(--secondary); }
 
-        .sponsors { text-align: right; font-size: 10px; color: var(--text-dim); }
-        .sponsors span { color: var(--secondary); font-weight: bold; display: block; font-size: 12px;}
-
-        /* Responsividade */
         @media(max-width: 768px) {
             header, .player-bar { width: 95%; padding: 0 15px; }
             nav ul { display: none; }
             .player-bar { grid-template-columns: 1fr 1fr; }
-            .sponsors { display: none; }
-            .about-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -285,68 +182,29 @@
                 <li><a href="#" onclick="navigate('home')" class="nav-link active" data-target="home">Home</a></li>
                 <li><a href="#" onclick="navigate('noticias')" class="nav-link" data-target="noticias">Notícias</a></li>
                 <li><a href="#" onclick="navigate('sobre')" class="nav-link" data-target="sobre">Quem Somos</a></li>
-                <li><a href="#" onclick="navigate('chat')" class="nav-link" data-target="chat">Chat ao Vivo</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
         <section id="home" class="page active">
-            <div class="hero">
-                <h2 class="glitch-title">O Epicentro do<br>Open Format</h2>
-                <p class="hero-subtitle">BEM-VINDO À FREQUÊNCIA DA NOVA CENA</p>
-                <div class="glass-panel" style="display: inline-block; padding: 20px 40px; margin-top: 20px;">
-                    <p style="color: var(--text-dim);">Transmissão Global • 24/7 • Alta Definição</p>
-                </div>
+            <h2 class="glitch-title">O Epicentro do<br>Open Format</h2>
+            <div class="glass-panel" style="display: inline-block; padding: 20px 40px; margin-top: 20px;">
+                <p style="color: var(--text-dim);">Live Streaming • Hunter FM Hits Brasil</p>
             </div>
         </section>
 
         <section id="noticias" class="page">
-            <h2 class="glitch-title">Radar LAB028</h2>
-            <div class="news-grid">
-                <div class="news-card glass-panel">
-                    <span class="news-date">Maio 2026</span>
-                    <h3>Novo Set Open Format Liberado</h3>
-                    <p style="margin-top: 10px; color: var(--text-dim);">DJ JOTTAPE 028 acaba de soltar a nova mixagem misturando Funk, Eletrônica e Trap.</p>
-                </div>
-                <div class="news-card glass-panel">
-                    <span class="news-date">Abril 2026</span>
-                    <h3>Expansão da SJ STUDIO MUSIC</h3>
-                    <p style="margin-top: 10px; color: var(--text-dim);">O estúdio parceiro oficial anuncia novos equipamentos para masterização de alta fidelidade.</p>
-                </div>
-                <div class="news-card glass-panel">
-                    <span class="news-date">Parceria Exclusiva</span>
-                    <h3>Energia Pura</h3>
-                    <p style="margin-top: 10px; color: var(--text-dim);">A rádio agora conta com o apoio da TAJO AÇAI, garantindo a energia das ruas.</p>
-                </div>
+            <h2 class="glitch-title">Feed</h2>
+            <div class="glass-panel" style="padding: 20px;">
+                <h3>Transmissão Ativa</h3>
+                <p>Link de áudio conectado com sucesso à infraestrutura LAB028.</p>
             </div>
         </section>
 
         <section id="sobre" class="page">
             <h2 class="glitch-title">Manifesto</h2>
-            <div class="about-grid">
-                <div class="about-card glass-panel">
-                    <h3>A Visão</h3>
-                    <p>A LAB028 nasceu para quebrar barreiras musicais. Somos um laboratório sonoro focado em conectar as ruas com a tecnologia de ponta.</p>
-                </div>
-                <div class="about-card glass-panel">
-                    <h3>DJ JOTTAPE 028</h3>
-                    <p>Fundador e produtor. Com background na música urbana, comanda as picapes e a programação avançada da rádio.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="chat" class="page">
-            <h2 class="glitch-title">Conexão Direta</h2>
-            <div class="chat-container glass-panel">
-                <div class="chat-box" id="chat-box">
-                    <div class="msg system">Bem-vindo ao chat global da LAB028.</div>
-                </div>
-                <form class="chat-input-area" onsubmit="sendMsg(event)">
-                    <input type="text" id="chat-input" placeholder="Mande sua mensagem na live..." autocomplete="off">
-                    <button type="submit" class="btn-send">ENVIAR</button>
-                </form>
-            </div>
+            <p>LAB028 é o laboratório sonoro do DJ JOTTAPE 028.</p>
         </section>
     </main>
 
@@ -354,8 +212,8 @@
         <div class="live-status">
             <div class="dot"></div>
             <div class="track-info">
-                <h4>LAB028: GO LIVE</h4>
-                <p id="player-status">Ao Vivo • Open Format</p>
+                <h4>LAB028: ON AIR</h4>
+                <p id="player-status">Clique no Play para ouvir</p>
             </div>
         </div>
         
@@ -363,52 +221,32 @@
             <button class="play-btn" id="play-btn" onclick="togglePlay()">▶</button>
         </div>
 
-        <div class="sponsors">
-            Sponsors
-            <span>TAJO AÇAI | UAI ACHEI</span>
+        <div style="text-align: right; font-size: 12px; color: var(--text-dim);">
+            Powered by <span>HUNTER FM</span>
         </div>
     </footer>
 
     <script>
-        // --- 1. CURSOR PERSONALIZADO ---
+        // 1. CURSOR
         const cursorDot = document.getElementById("cursor-dot");
         const cursorOutline = document.getElementById("cursor-outline");
-
-        window.addEventListener("mousemove", function(e) {
-            const posX = e.clientX;
-            const posY = e.clientY;
-            cursorDot.style.left = `${posX}px`;
-            cursorDot.style.top = `${posY}px`;
-            cursorOutline.animate({
-                left: `${posX}px`,
-                top: `${posY}px`
-            }, { duration: 500, fill: "forwards" });
+        window.addEventListener("mousemove", (e) => {
+            const { clientX: x, clientY: y } = e;
+            cursorDot.style.left = `${x}px`; cursorDot.style.top = `${y}px`;
+            cursorOutline.animate({ left: `${x}px`, top: `${y}px` }, { duration: 500, fill: "forwards" });
         });
 
-        document.querySelectorAll('a, button, input').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1.5)';
-                cursorOutline.style.borderColor = 'var(--secondary)';
-            });
-            el.addEventListener('mouseleave', () => {
-                cursorOutline.style.transform = 'translate(-50%, -50%) scale(1)';
-                cursorOutline.style.borderColor = 'var(--primary)';
-            });
-        });
-
-        // --- 2. SISTEMA SPA ---
-        function navigate(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            document.querySelector(`.nav-link[data-target="${pageId}"]`).classList.add('active');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        // 2. SPA
+        function navigate(id) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelector(`[data-target="${id}"]`).classList.add('active');
         }
 
-        // --- 3. LÓGICA DO PLAYER (RÁDIO REAL) ---
+        // 3. PLAYER REAL (HUNTER FM)
         let isPlaying = false;
-        // SUBSTITUA O LINK ABAIXO PELO SEU LINK DE TRANSMISSÃO
-        const audio = new Audio("https://live.hunter.fm/tropical_stream?ag=mp3");
+        const audio = new Audio("https://live.hunter.fm/hitsbrasil_stream?ag=mp3");
         audio.crossOrigin = "anonymous";
 
         function togglePlay() {
@@ -419,43 +257,14 @@
                 audio.play().then(() => {
                     isPlaying = true;
                     btn.innerHTML = 'Ⅱ';
-                    btn.style.boxShadow = '0 0 20px var(--secondary)';
-                    status.innerText = "Tocando: DJ JOTTAPE 028 - Live Set";
-                }).catch(err => {
-                    console.error("Erro ao tocar áudio:", err);
-                    status.innerText = "Erro na conexão...";
-                });
+                    status.innerText = "Tocando: Hunter FM - Hits Brasil";
+                }).catch(e => status.innerText = "Erro ao conectar...");
             } else {
                 audio.pause();
-                // Reseta o source para não acumular cache/atraso
-                audio.src = audio.src; 
+                audio.src = audio.src; // Evita lag de buffer
                 isPlaying = false;
                 btn.innerHTML = '▶';
-                btn.style.boxShadow = 'none';
-                status.innerText = "Ao Vivo • Open Format";
-            }
-        }
-
-        // --- 4. LÓGICA DO CHAT AO VIVO ---
-        function sendMsg(e) {
-            e.preventDefault();
-            const input = document.getElementById('chat-input');
-            const text = input.value.trim();
-            if(text !== "") {
-                const chatBox = document.getElementById('chat-box');
-                const msgDiv = document.createElement('div');
-                msgDiv.className = 'msg user';
-                msgDiv.innerHTML = `<strong>@Você:</strong> ${text}`;
-                chatBox.appendChild(msgDiv);
-                input.value = "";
-                chatBox.scrollTop = chatBox.scrollHeight;
-                setTimeout(() => {
-                    const replyDiv = document.createElement('div');
-                    replyDiv.className = 'msg';
-                    replyDiv.innerHTML = `<strong>@Bot028:</strong> Mensagem recebida na base! 🎧`;
-                    chatBox.appendChild(replyDiv);
-                    chatBox.scrollTop = chatBox.scrollHeight;
-                }, 1500);
+                status.innerText = "Pausado";
             }
         }
     </script>
